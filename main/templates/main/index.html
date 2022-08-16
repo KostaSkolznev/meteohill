@@ -1,3 +1,48 @@
 {% extends 'main/layout.html' %}
 
-GIT 
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <h2>Yekaterinburg</h2>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="card m-3">
+        <div class="card-body row">
+          <h5 class="card-title">Accuweather</h5>
+          <p class="card-text col-5 text-center temperature-font">21°</p>
+          <p class="card-text col-7">
+            Humidity: 35% <br>
+            Precipitation: No <br>
+            Cloud Cover: 4% <br>
+            Wind: 13km\h <br>
+            Wind Gusts: 30km\h <br>
+            Sun rise: 5:26 <br>
+            Moon rise: 22:05 <br>
+          </p>
+          <a href="#" class="text-info">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card m-3">
+        <div class="card-body row">
+          <h5 class="card-title">Gismeteo</h5>
+          <p class="card-text col-5 text-center temperature-font">21°</p>
+          <p class="card-text col-7">
+            Humidity: 35% <br>
+            Precipitation: No <br>
+            Cloud Cover: 4% <br>
+            Wind: 13km\h <br>
+            Wind Gusts: 30km\h <br>
+            Sun rise: 5:26 <br>
+            Moon rise: 22:05 <br>
+          </p>
+          <a href="#" class="text-info">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

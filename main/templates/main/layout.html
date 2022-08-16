@@ -1,31 +1,99 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport">
-    <title></title>
+    <title>{% block title %}{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   </head>
   <body>
+    <header class="container">
+      <div class="row">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+  
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          </ul>
+  
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+          </form>
+  
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
+        </div>
+      </div>
+    </header>
     <aside>
-      <img src="{% static 'main/img/logo.png' %}" alt="logo">
-      <span class="logo">Demo</span>
       <h3>Navigation</h3>
       <ul>
-        <a  href="{% url 'home' %}"><li><i class="fas fa-home"></i>MainPage</li></a>
-        <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i>AboutUs</li></a>
-        <a href="{% url 'news_home' %}"><li><i class="fas fa-address-card"></i>News</li></a>
+        <a  href="#"><li><i class="fas fa-home"></i>MainPage</li></a>
+        <a href="#}"><li><i class="fas fa-address-card"></i>AboutUs</li></a>
+        <a href="#"><li><i class="fas fa-address-card"></i>News</li></a>
         <a href="#"><li><i class="fas fa-paper-plane"></i>Contacts</li></a>
-        <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Add</li></a>
+        <a href="#"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Add</li></a>
       </ul>
     </aside>
     <main>
-      {% vlock content %}
-        
+      {% block content %}
       {% endblock %}
     </main>
+
+    <div class="container">
+      <footer class="row row-cols-5 py-5 my-5 border-top">
+        <div class="col">
+          <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+          <p class="text-info">© 2021</p>
+        </div>
+    
+        <div class="col">
+    
+        </div>
+    
+        <div class="col">
+          <h5>Information</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Join</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">About</a></li>
+          </ul>
+        </div>
+    
+        <div class="col">
+          <h5>Navigation</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Now weather</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">5-Day's weather</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Weather station</a></li>
+          </ul>
+        </div>
+    
+        <div class="col">
+          <h5>Links</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Accuweather</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-info">Gismeteo</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
   </body>
 </html>
