@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="col-md-8 col-sm-12">
+        <h2>Yekaterinburg</h2>
+      </div>
+      <div>
+        <h3>Accuweather weather info</h3>
+      </div>
+      <div>
+        <p>Temperature: {{ info.temp }}°</p>
+      </div>
+      <div>
+        <p>Humidity: {{ info.humidity }}%</p>
+      </div>
+      <div>
+        <p>Precipitation: {{ info.precipitation }}</p>
+      </div>
+      <div>
+        <p>Cloud Cover: {{ info.clouds }}</p>
+      </div>
+      <div>
+        <p>Wind: {{ info.wind }}km/h</p>
+      </div>
+      <div>
+        <p>Wind gusts: {{ info.windgust }}km/h</p>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+    </div>
+  </div>
+
+{% endblock %}

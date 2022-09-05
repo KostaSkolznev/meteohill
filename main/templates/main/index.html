@@ -7,17 +7,28 @@
 {% block content %}
   <div class="row">
     <div class="col-md-8 col-sm-12">
-      <h2>Yekaterinburg</h2>
+      <div class="col-md-8 col-sm-12">
+        <h2>Yekaterinburg</h2>
+      </div>
+      <div>
+        <p>Temperature:</p>
+      </div>
+      <div>
+        <p>Humidity:</p>
+      </div>
+      <div>
+        <p>Cloud Cover:</p>
+      </div>
     </div>
     <div class="col-md-4 col-sm-12">
       <div class="card m-3">
         <div class="card-body row">
           <h5 class="card-title">Accuweather</h5>
-          <p class="card-text col-5 text-center temperature-font">21°</p>
+          <p class="card-text col-5 text-center temperature-font">{{ info.temp }}°</p>
           <p class="card-text col-7">
             Humidity: 35% <br>
-            Precipitation: No <br>
-            Cloud Cover: 4% <br>
+            Precipitation: {{ info.precipitation }} <br>
+            Cloud Cover: {{ info.clouds }} <br>
             Wind: 13km\h <br>
             Wind Gusts: 30km\h <br>
             Sun rise: 5:26 <br>
@@ -43,6 +54,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="card m3">
+    {{ temp }}
+    {{ precipitation }}
   </div>
 
 {% endblock %}
