@@ -76,6 +76,9 @@ body {
   .card {
     background-color: #0dcaf02e;
   }
+  .card-body p {
+    text-shadow: #0dcaf0 4px 4px 2px;
+  }
   .temperature-font {
     font-size: 5vw;
   }
