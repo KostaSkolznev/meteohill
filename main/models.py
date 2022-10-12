@@ -11,6 +11,9 @@ class WeatherStatus(models.Model):
     cloud_cover = models.CharField(max_length=25)
     cloud_img = models.CharField(max_length=25)
 
+    def __str__(self):
+        return self.cloud_img
+
 class WeatherService(models.Model):
     service_name = models.CharField(max_length=25)
     service_url = models.CharField(max_length=250)
@@ -28,7 +31,7 @@ class Weather(models.Model):
     temperature_day = models.IntegerField()
     temperature_night = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
-    precipitation_type = models.ForeignKey(WeatherStatus, related_name='precipitation_type', on_delete=models.PROTECT)
+    precipitation_type = models.ForeignKey(WeatherStatus, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.service_name
+        return self.date
