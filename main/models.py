@@ -28,7 +28,8 @@ class Weather(models.Model):
     temperature_day = models.IntegerField()
     temperature_night = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
-    precipitation_type = models.ForeignKey(WeatherStatus, on_delete=models.PROTECT)
+    precipitation_type = models.ForeignKey(WeatherStatus, related_name='precipitation_type', on_delete=models.PROTECT)
+    cloud = models.ForeignKey(WeatherStatus, related_name='cloud', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.service_name
