@@ -18,3 +18,17 @@ class WeatherService(models.Model):
 
     def __str__(self):
         return self.service_name
+
+class Weather(models.Model):
+    city = models.ForeignKey(City, on_delete=models.PROTECT)
+    service = models.ForeignKey(WeatherService, on_delete=models.PROTECT)
+    humidity = models.IntegerField()
+    wind = models.IntegerField()
+    wind_gusts = models.IntegerField()
+    temperature_day = models.IntegerField()
+    temperature_night = models.IntegerField()
+    date = models.DateTimeField(auto_now_add=True)
+    precipitation_type = models.ForeignKey(WeatherStatus, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.service_name
