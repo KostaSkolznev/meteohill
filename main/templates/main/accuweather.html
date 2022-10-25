@@ -13,32 +13,36 @@
       <div>
         <h3>Accuweather weather info</h3>
       </div>
-      <div class="card col-md-4 col-sm-6">
-        <div class="card-body">
-          <p>Temperature day:</p>
-          <p class="temperature-font text-center">{{ info.temp }}°</p>
+      <div class="row">
+        <div class="card col-md-4 col-sm-6">
+          <div class="card-body">
+            <p>Temperature day:</p>
+            <p class="temperature-font text-center">{{ info.temp }}°</p>
+          </div>
+          <div class="card-body">
+            <p>Temperature night:</p>
+            <p class="temperature-font text-center">{{ info.tempnight }}°</p>
+          </div>
         </div>
-        <div class="card-body">
-          <p>Temperature night:</p>
-          <p class="temperature-font text-center">{{ info.tempnight }}°</p>
+        <div class="card card-body col-md-8 col-sm-12">
+          <div>
+            <p>Humidity: {{ info.humidity }}%</p>
+          </div>
+          <div>
+            <p>Precipitation: {{ info.precipitation }}</p>
+          </div>
+          <div>
+            <p>Cloud Cover: {{ info.clouds }}</p>
+          </div>
+          <div>
+            <p>Wind: {{ info.wind }}km/h</p>
+          </div>
+          <div>
+            <p>Wind gusts: {{ info.windgust }}km/h</p>
+          </div>
         </div>
       </div>
-      
-      <div>
-        <p>Humidity: {{ info.humidity }}%</p>
-      </div>
-      <div>
-        <p>Precipitation: {{ info.precipitation }}</p>
-      </div>
-      <div>
-        <p>Cloud Cover: {{ info.clouds }}</p>
-      </div>
-      <div>
-        <p>Wind: {{ info.wind }}km/h</p>
-      </div>
-      <div>
-        <p>Wind gusts: {{ info.windgust }}km/h</p>
-      </div>
+
     </div>
     <div class="col-md-4 col-sm-12">
     </div>
