@@ -13,12 +13,17 @@
       <div>
         <h3>Accuweather weather info</h3>
       </div>
-      <div>
-        <p>Temperature day: {{ info.temp }}°</p>
+      <div class="card col-md-4 col-sm-6">
+        <div class="card-body">
+          <p>Temperature day:</p>
+          <p class="temperature-font text-center">{{ info.temp }}°</p>
+        </div>
+        <div class="card-body">
+          <p>Temperature night:</p>
+          <p class="temperature-font text-center">{{ info.tempnight }}°</p>
+        </div>
       </div>
-      <div>
-        <p>Temperature night: {{ info.tempnight }}°</p>
-      </div>
+      
       <div>
         <p>Humidity: {{ info.humidity }}%</p>
       </div>
