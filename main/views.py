@@ -25,6 +25,7 @@ def accuweather(request):
 
     weather_info = {
         'temp': round(res[0]["Temperature"]["Metric"]["Value"]),
+        'tempnight': round(res[0]["TemperatureSummary"]["Past24HourRange"]["Minimum"]["Metric"]["Value"]),
         'humidity': res[0]["RelativeHumidity"],
         'precipitation': res[0]["PrecipitationType"],
         'clouds': res[0]["WeatherText"],
