@@ -26,12 +26,12 @@
           <h5 class="card-title">Accuweather</h5>
           <p class="card-text col-5 text-center temperature-font">{{ info.temp }}°</p>
           <p class="card-text col-7">
-            Humidity: 35% <br>
+            Humidity: {{ info.humidity }} <br>
             Precipitation: {{ info.precipitation }} <br>
             Cloud Cover: {{ info.clouds }} <br>
-            Wind: 13km\h <br>
-            Wind Gusts: 30km\h <br>
-            Test: {{ info.weatherinf }}
+            Wind: {{ info.wind }} <br>
+            Wind Gusts: {{ info.windgust }} <br>
+            Date: {{ info.datenow }}
           </p>
           <a href="/accuweather" class="text-info">Accuweather page</a>
         </div>
