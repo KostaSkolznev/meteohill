@@ -1,7 +1,6 @@
 import requests
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Weather, WeatherService
+from .models import Weather, City, WeatherService, WeatherStatus
 import datetime
 
 url = 'http://dataservice.accuweather.com/currentconditions/v1/295863?apikey=ICseysmELVRIU8R8EF1lle8lR88uJgX6&details=true'
@@ -37,14 +36,14 @@ else:
     }
 
     add_weather = Weather(
-        city = 1,
-        service = 1,
-        humidity = {{ weather_info.humidity }},
-        wind = {{ weather_info.wind }},
-        windgusts = {{ weather_info.windgust }},
-        temperature_day = {{ weather_info.temp }},
-        temperature_night = {{weather_info.tempnight}},
-        precipitation_type = 1,
+        city = City.objects.get(id = 1),
+        service = WeatherService.objects.get(id = 1),
+        humidity = weather_info['humidity'],
+        wind = weather_info['wind'],
+        wind_gusts = weather_info['windgust'],
+        temperature_day = weather_info['temp'],
+        temperature_night = weather_info['tempnight'],
+        precipitation_type = WeatherStatus.objects.get(id = 1),
     )
 
     add_weather.save()
