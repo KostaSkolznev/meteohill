@@ -12,13 +12,13 @@ checkdate = Weather.objects.filter(date__date=now, service=1)
 if checkdate.exists():
     a = True
     weather_info = {
-        'temp': checkdate.temperature_day,
-        'tempnight': checkdate.temperature_night,
-        'humidity': checkdate.humidity,
-        'precipitation': checkdate.precipitation_type,
-        'clouds': checkdate.precipitation_type,
-        'wind': checkdate.wind,
-        'windgust': checkdate.windgusts,
+        'temp': checkdate['temperature_day'],
+        'tempnight': checkdate.values_list('temperature_night'),
+        'humidity': checkdate.values_list('humidity'),
+        'precipitation': checkdate.values_list('precipitation_type'),
+        'clouds': checkdate.values_list('precipitation_type'),
+        'wind': checkdate.values_list('wind'),
+        'windgust': checkdate.values_list('wind_gusts'),
         'datenow': a,
     }
 
