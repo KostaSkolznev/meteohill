@@ -10,20 +10,18 @@ now = datetime.date.today()
 checkdate = Weather.objects.filter(date__date=now, service=1)
 
 if checkdate.exists():
-    a = True
-    weather_info = {
-        'temp': checkdate['temperature_day'],
-        'tempnight': checkdate.values_list('temperature_night'),
-        'humidity': checkdate.values_list('humidity'),
-        'precipitation': checkdate.values_list('precipitation_type'),
-        'clouds': checkdate.values_list('precipitation_type'),
-        'wind': checkdate.values_list('wind'),
-        'windgust': checkdate.values_list('wind_gusts'),
-        'datenow': a,
-    }
+    for el in checkdate:
+        weather_info = {
+            'temp': el.temperature_day,
+            'tempnight': el.temperature_night,
+            'humidity': el.humidity,
+            'precipitation': el.precipitation_type,
+            'clouds': el.precipitation_type,
+            'wind': el.wind,
+            'windgust': el.wind_gusts,
+        }
 
 else:
-    a = False
     weather_info = {
         'temp': round(res[0]["Temperature"]["Metric"]["Value"]),
         'tempnight': round(res[0]["TemperatureSummary"]["Past24HourRange"]["Minimum"]["Metric"]["Value"]),
@@ -32,7 +30,6 @@ else:
         'clouds': res[0]["WeatherText"],
         'wind': res[0]["Wind"]["Speed"]["Metric"]["Value"],
         'windgust': res[0]["WindGust"]["Speed"]["Metric"]["Value"],
-        'datenow': a,
     }
 
     add_weather = Weather(
