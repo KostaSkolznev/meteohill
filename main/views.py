@@ -3,13 +3,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DetailView
 from main.weatherdata import weather_info
+from main.clock import oclock
 
 def index(request):
     url = 'http://dataservice.accuweather.com/currentconditions/v1/295863?apikey=ICseysmELVRIU8R8EF1lle8lR88uJgX6'
     res = requests.get(url).json()
 
     context = {
-        'info': weather_info
+        'info': weather_info,
+        'clock': oclock,
     }
 
     return render(request, 'main/index.html', context)
