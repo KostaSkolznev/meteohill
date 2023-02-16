@@ -24,13 +24,29 @@ class WeatherData:
             'temp': el.temperature_day,
             'tempnight': el.temperature_night,
             'humidity': el.humidity,
-            'precipitation': el.precipitation_type,
-            'clouds': el.precipitation_type,
+            'precipitation': el.precipitation_type.precipitation,
+            'clouds': el.precipitation_type.cloud_cover,
             'wind': el.wind,
             'windgust': el.wind_gusts,
         }
         
         return weather_info
+
+    def select_weather_status(self, select_precipitation, clouds):
+        if select_precipitation == "None" and clouds == "Cloudy":
+            return 1
+        elif select_precipitation == "Rain" and clouds == "Cloudy":
+            return 2
+        elif select_precipitation == "Rain" and clouds == "Sun":
+            return 3
+        elif select_precipitation == "Snow" and clouds == "Cloudy":
+            return 4
+        elif select_precipitation == "Snow" and clouds == "Sun":
+            return 5
+        elif select_precipitation == "Thunderstorm" and clouds == "Cloudy":
+            return 6
+        else: return 7
+
     # add data to database
     def add_weather(self,
                     city,
@@ -50,12 +66,11 @@ class WeatherData:
             wind_gusts = weather_info['windgust'],
             temperature_day = weather_info['temp'],
             temperature_night = weather_info['tempnight'],
-            precipitation_type = WeatherStatus.objects.get(id = 1),
+            precipitation_type = WeatherStatus.objects.get(id = precipitation_type),
         )
 
         add_this_weather.save()
 
-        #setinfo.save()
 # create object accuweather
 accuweather = WeatherData('http://dataservice.accuweather.com/currentconditions/v1/295863?apikey=ICseysmELVRIU8R8EF1lle8lR88uJgX6&details=true', 1)
 res = requests.get(accuweather.url).json()
@@ -76,6 +91,11 @@ else:
         'windgust': res[0]["WindGust"]["Speed"]["Metric"]["Value"],
     }
 
+    weather_status = accuweather.select_weather_status(
+        weather_info['precipitation'],
+        weather_info['clouds']
+    )
+
     accuweather.add_weather(
         City.objects.get(id = 1),
         WeatherService.objects.get(id = 1),
@@ -84,5 +104,5 @@ else:
         weather_info['windgust'],
         weather_info['temp'],
         weather_info['tempnight'],
-        WeatherStatus.objects.get(id = 1),
+        weather_status,
     )
