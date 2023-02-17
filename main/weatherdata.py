@@ -33,7 +33,7 @@ class WeatherData:
         return weather_info
 
     def select_weather_status(self, select_precipitation, clouds):
-        if select_precipitation == "None" and clouds == "Cloudy":
+        if select_precipitation == None and clouds == "Cloudy":
             return 1
         elif select_precipitation == "Rain" and clouds == "Cloudy":
             return 2
@@ -56,7 +56,7 @@ class WeatherData:
                     wind_gusts,
                     temperature_day,
                     temperature_night,
-                    precipitation_type,
+                    this_precipitation_type,
                     ):
         add_this_weather = Weather(
             city = City.objects.get(id = 1),
@@ -66,7 +66,7 @@ class WeatherData:
             wind_gusts = weather_info['windgust'],
             temperature_day = weather_info['temp'],
             temperature_night = weather_info['tempnight'],
-            precipitation_type = WeatherStatus.objects.get(id = precipitation_type),
+            precipitation_type = WeatherStatus.objects.get(id = this_precipitation_type),
         )
 
         add_this_weather.save()
