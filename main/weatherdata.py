@@ -59,13 +59,13 @@ class WeatherData:
                     this_precipitation_type,
                     ):
         add_this_weather = Weather(
-            city = City.objects.get(id = 1),
-            service = WeatherService.objects.get(id = 1),
-            humidity = weather_info['humidity'],
-            wind = weather_info['wind'],
-            wind_gusts = weather_info['windgust'],
-            temperature_day = weather_info['temp'],
-            temperature_night = weather_info['tempnight'],
+            city = City.objects.get(id = city),
+            service = WeatherService.objects.get(id = service),
+            humidity = humidity,
+            wind = wind,
+            wind_gusts = wind_gusts,
+            temperature_day = temperature_day,
+            temperature_night = temperature_night,
             precipitation_type = WeatherStatus.objects.get(id = this_precipitation_type),
         )
 
@@ -97,12 +97,50 @@ else:
     )
 
     accuweather.add_weather(
-        City.objects.get(id = 1),
-        WeatherService.objects.get(id = 1),
+        1,
+        1,
         weather_info['humidity'],
         weather_info['wind'],
         weather_info['windgust'],
         weather_info['temp'],
         weather_info['tempnight'],
         weather_status,
+    )
+
+# create object openweathermap
+openweathermap = WeatherData('https://api.openweathermap.org/data/2.5/weather?lat=56.89&lon=60.59&appid=adb6cc59405eccf87bfc29eab6a9e9b5&units=metric', 2)
+owres = requests.get(openweathermap.url).json()
+
+# check if data exists
+if openweathermap.checkdate() is True:
+    openweather_info = openweathermap.get_data()
+
+# if not exist then get api and add to DB
+else:
+    openweather_info = {
+        'temp': round(owres["main"]["temp"]),
+        'tempnight': round(owres["main"]["temp_min"]),
+        'humidity': owres["main"]["humidity"],
+        'precipitation': owres["weather"][0]["main"],
+        'clouds': owres["weather"][0]["main"],
+        'wind': owres["wind"]["speed"],
+        'windgust': owres["wind"]["gust"],
+        'sunrise': owres["sys"]["sunrise"],
+        'sunset': owres["sys"]["sunset"],
+    }
+
+    openweather_status = accuweather.select_weather_status(
+        openweather_info['precipitation'],
+        openweather_info['clouds']
+    )
+
+    openweathermap.add_weather(
+        1,
+        2,
+        openweather_info['humidity'],
+        openweather_info['wind'],
+        openweather_info['windgust'],
+        openweather_info['temp'],
+        openweather_info['tempnight'],
+        openweather_status,
     )
