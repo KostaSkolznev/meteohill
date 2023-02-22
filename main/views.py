@@ -24,3 +24,11 @@ def accuweather(request):
     }
 
     return render(request, 'main/accuweather.html', context)
+
+def openweather(request):
+
+    context = {
+        'openweather_info': openweather_info
+    }
+
+    return render(request, 'main/openweather.html', context)

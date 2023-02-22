@@ -1,0 +1,51 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="col-md-8 col-sm-12">
+        <h2>Yekaterinburg</h2>
+      </div>
+      <div>
+        <h3>OpenWeather weather info</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="card card-body">
+            <p>Temperature day:</p>
+            <p class="temperature-font text-center">{{ openweather_info.temp }}°</p>
+          </div>
+          <div class="card card-body">
+            <p>Temperature night:</p>
+            <p class="temperature-font text-center">{{ openweather_info.tempnight }}°</p>
+          </div>
+        </div>
+        <div class="card card-body col-md-8 col-sm-12">
+          <div>
+            <p>Humidity: {{ openweather_info.humidity }}%</p>
+          </div>
+          <div>
+            <p>Precipitation: {{ openweather_info.precipitation }}</p>
+          </div>
+          <div>
+            <p>Cloud Cover: {{ openweather_info.clouds }}</p>
+          </div>
+          <div>
+            <p>Wind: {{ openweather_info.wind }}km/h</p>
+          </div>
+          <div>
+            <p>Wind gusts: {{ openweather_info.windgust }}km/h</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 col-sm-12">
+    </div>
+  </div>
+
+{% endblock %}
