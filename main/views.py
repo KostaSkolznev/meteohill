@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DetailView
-from main.weatherdata import weather_info
+from main.weatherdata import weather_info, openweather_info
 from main.clock import oclock
 
 def index(request):
@@ -12,6 +12,7 @@ def index(request):
     context = {
         'info': weather_info,
         'clock': oclock,
+        'openweather_info': openweather_info,
     }
 
     return render(request, 'main/index.html', context)

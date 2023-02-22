@@ -37,18 +37,18 @@
       </div>
       <div class="card m-3">
         <div class="card-body row">
-          <h5 class="card-title">Gismeteo</h5>
-          <p class="card-text col-5 text-center temperature-font">21°</p>
+          <h5 class="card-title">OpenWeather</h5>
+          <p class="card-text col-5 text-center temperature-font">{{ openweather_info.temp }}°</p>
           <p class="card-text col-7">
-            Humidity: 35% <br>
-            Precipitation: No <br>
-            Cloud Cover: 4% <br>
-            Wind: 13km\h <br>
-            Wind Gusts: 30km\h <br>
-            Sun rise: 5:26 <br>
-            Moon rise: 22:05 <br>
+            Humidity: {{ openweather_info.humidity }}% <br>
+            Precipitation: {{ openweather_info.precipitation }} <br>
+            Cloud Cover: {{ openweather_info.clouds }} <br>
+            Wind: {{ openweather_info.wind }} km/h<br>
+            Wind Gusts: {{ openweather_info.windgust }} km/h<br>
+            Sun rise: {{ openweather_info.sunrise }} <br>
+            Moon rise: {{ openweather_info.sunset }} <br>
           </p>
-          <a href="#" class="text-info">Go somewhere</a>
+          <a href="#" class="text-info">OpenWeather page</a>
         </div>
       </div>
     </div>
