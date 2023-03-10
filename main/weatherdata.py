@@ -117,12 +117,17 @@ if openweathermap.checkdate() is True:
 
 # if not exist then get api and add to DB
 else:
+    if int(owres["clouds"]["all"]) < 50:
+        cloudy = 'Cloudy'
+    else:
+        cloudy = 'Sun'
+
     openweather_info = {
         'temp': round(owres["main"]["temp"]),
         'tempnight': round(owres["main"]["temp_min"]),
         'humidity': owres["main"]["humidity"],
         'precipitation': owres["weather"][0]["main"],
-        'clouds': owres["weather"][0]["main"],
+        'clouds': cloudy,
         'wind': owres["wind"]["speed"],
         'windgust': owres["wind"]["gust"],
         'sunrise': owres["sys"]["sunrise"],
