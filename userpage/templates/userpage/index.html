@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="col-md-8 col-sm-12">
+        <h2>{{ user }}</h2>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <span>City: Yekaterinburg</span>
+    </div>
+  </div>
+  <div class="card m3">
+    <ul>
+      <li>Accuweather</li>
+      <li>OpenWeatherMap</li>
+    </ul>
+  </div>
+
+{% endblock %}
