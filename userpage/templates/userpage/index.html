@@ -10,16 +10,19 @@
       <div class="col-md-8 col-sm-12">
         <h2>{{ user }}</h2>
       </div>
-    </div>
-    <div class="col-md-4 col-sm-12">
-      <span>City: Yekaterinburg</span>
+      <div class="col-md-4 col-sm-12">
+        City:
+        <form action="get">
+          
+        </form>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+          <option selected value="1">Yekaterinburg <a href=""><i class="bi bi-globe-europe-africa"></i></a></option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div class="card m3">
-    <ul>
-      <li>Accuweather</li>
-      <li>OpenWeatherMap</li>
-    </ul>
-  </div>
+
 
 {% endblock %}
