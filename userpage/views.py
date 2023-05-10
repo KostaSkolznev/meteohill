@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views import View
+from .models import City
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 
 def index(request):
-    return render(request, 'userpage/index.html')
+    context = {
+        'cities': City.objects.all()
+        }
+
+    return render(request, 'userpage/index.html', context)
 
 class Register(View):
     template_name = 'registration/register.html'
