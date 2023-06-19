@@ -1,17 +1,26 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views import View
+from django.http import HttpResponse
 from .models import City
+from .models import Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
-    context = {
-        'cities': City.objects.all()
-        }
 
-    return render(request, 'userpage/index.html', context)
+    context = {
+        'cities': City.objects.all(),
+        'selected_city': Profile.objects.get(UserID=request.user)
+        }
+        
+    if request.user.is_authenticated:
+        return render(request, 'userpage/index.html', context)
+    else:
+        return render(request, 'registration/login.html')
 
 class Register(View):
     template_name = 'registration/register.html'
