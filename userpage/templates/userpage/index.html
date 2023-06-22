@@ -8,22 +8,23 @@
   <div class="row">
     <div class="col-md-8 col-sm-12">
       <div class="col-md-8 col-sm-12">
-        <h2>{{ user }}</h2>
-        <p>{{ selected_city }}</p>
+        
       </div>
       <div class="col-md-4 col-sm-12">
-        City:
+        City: {{ selected_city }}
         <form method="post">
           {% csrf_token %}
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+          <input type="hidden" name="UserID" value="{{ user.id }}" />
+          <select name="SelectedCity" class="form-select form-select-sm" aria-label=".form-select-sm example">
             {% for el in cities%}
               {% if selected_city.id == el.id %}
-                <option value="{{ el.id }}">{{ el }}<a href=""><i class="bi bi-globe-europe-africa"></i></a></option>
+                <option selected="selected" value="{{ el.id }}">{{ el }}<a href=""><i class="bi bi-globe-europe-africa"></i></a></option>
               {% else %}
                 <option value="{{ el.id }}">{{ el }}<a href=""><i class="bi bi-globe-europe-africa"></i></a></option>
               {% endif %}
             {% endfor %}
           </select>
+          {{ UpdateProfileForm }}
           <button type="submit" class="btn btn-primary">Save Settings</button>
         </form>
         

@@ -1,26 +1,40 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views import View
-from django.http import HttpResponse
 from .models import City
 from .models import Profile
+from .forms import UpdateProfileForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
-
+@login_required(login_url='/login')
 def index(request):
-
     context = {
-        'cities': City.objects.all(),
-        'selected_city': Profile.objects.get(UserID=request.user)
-        }
+            'cities': City.objects.all(),
+            'selected_city': Profile.objects.get().SelectedCity
+            }
+    profile = Profile.objects.get()
+
+    if request.method == 'POST':
+        profile_form = UpdateProfileForm(request.POST, instance = profile)
         
-    if request.user.is_authenticated:
-        return render(request, 'userpage/index.html', context)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Your city is updated successfully')
+            context = {
+            'cities': City.objects.all(),
+            'selected_city': Profile.objects.get().SelectedCity
+            }
+            return render(request, 'userpage/index.html', context)
+        else:
+            messages.success(request, profile_form)
+            return render(request, 'userpage/index.html', context)
     else:
-        return render(request, 'registration/login.html')
+        return render(request, 'userpage/index.html', context)
+
 
 class Register(View):
     template_name = 'registration/register.html'
