@@ -14,9 +14,9 @@ from django.contrib import messages
 def index(request):
     context = {
             'cities': City.objects.all(),
-            'selected_city': Profile.objects.get().SelectedCity
+            'selected_city': Profile.objects.get(UserID = request.user).SelectedCity
             }
-    profile = Profile.objects.get()
+    profile = Profile.objects.get(UserID = request.user)
 
     if request.method == 'POST':
         profile_form = UpdateProfileForm(request.POST, instance = profile)
@@ -26,7 +26,7 @@ def index(request):
             messages.success(request, 'Your city is updated successfully')
             context = {
             'cities': City.objects.all(),
-            'selected_city': Profile.objects.get().SelectedCity
+            'selected_city': Profile.objects.get(UserID = request.user).SelectedCity
             }
             return render(request, 'userpage/index.html', context)
         else:
