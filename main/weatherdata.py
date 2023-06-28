@@ -1,5 +1,4 @@
 import requests
-from django.shortcuts import render
 from .models import Weather, City, WeatherService, WeatherStatus
 import datetime
 
@@ -118,9 +117,11 @@ if openweathermap.checkdate() is True:
 # if not exist then get api and add to DB
 else:
     if int(owres["clouds"]["all"]) < 50:
-        cloudy = 'Cloudy'
+        cloudy = 'Sunny'
     else:
-        cloudy = 'Sun'
+        cloudy = 'Cloudy'
+
+    
 
     openweather_info = {
         'temp': round(owres["main"]["temp"]),
