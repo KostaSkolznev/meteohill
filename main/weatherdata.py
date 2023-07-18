@@ -107,7 +107,7 @@ else:
     )
 
 # create object openweathermap
-openweathermap = WeatherData('https://api.openweathermap.org/data/2.5/weather?lat=56.89&lon=60.59&appid=adb6cc59405eccf87bfc29eab6a9e9b5&units=metric', 2)
+openweathermap = WeatherData('https://api.openweathermap.org/data/2.5/weather?q=ekaterinburg&appid=adb6cc59405eccf87bfc29eab6a9e9b5&units=metric', 2)
 owres = requests.get(openweathermap.url).json()
 
 # check if data exists
