@@ -32,3 +32,6 @@ def openweather(request):
     }
 
     return render(request, 'main/openweather.html', context)
+
+def about(request):
+    return render(request, 'main/about.html')

@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="col-md-8 col-sm-12">
+        <h1>About us</h1>
+      </div>
+      <div>
+        <p>This is a weather station project, what can store Data about weather from accuweather,
+          openweather services and own weatherstation like based on Arduino or ESP8266.</p>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="card m-3">
+        <div class="card-body row">
+          <h5 class="card-title">Accuweather</h5>
+          <p class="card-text col-5 text-center temperature-font">{{ info.temp }}°</p>
+          <p class="card-text col-7">
+            Humidity: {{ info.humidity }}%<br>
+            Precipitation: {{ info.precipitation }} <br>
+            Cloud Cover: {{ info.clouds }} <br>
+            Wind: {{ info.wind }} km/h<br>
+            Wind Gusts: {{ info.windgust }} km/h<br>
+          </p>
+          <a href="/accuweather" class="text-info">Accuweather page</a>
+        </div>
+      </div>
+      <div class="card m-3">
+        <div class="card-body row">
+          <h5 class="card-title">OpenWeather</h5>
+          <p class="card-text col-5 text-center temperature-font">{{ openweather_info.temp }}°</p>
+          <p class="card-text col-7">
+            Humidity: {{ openweather_info.humidity }}% <br>
+            Precipitation: {{ openweather_info.precipitation }} <br>
+            Cloud Cover: {{ openweather_info.clouds }} <br>
+            Wind: {{ openweather_info.wind }} km/h<br>
+            Wind Gusts: {{ openweather_info.windgust }} km/h<br>
+          </p>
+          <a href="/openweather" class="text-info">OpenWeather page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card m3">
+    {{ temp }}
+    {{ precipitation }}
+  </div>
+
+{% endblock %}
