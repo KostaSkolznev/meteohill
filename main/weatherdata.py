@@ -1,6 +1,7 @@
 import requests
 from .models import Weather, City, WeatherService, WeatherStatus
 import datetime
+from meteohill.localsettings import accuweather_token, openweather_token
 
 # class for weather data
 class WeatherData:
@@ -71,7 +72,7 @@ class WeatherData:
         add_this_weather.save()
 
 # create object accuweather
-accuweather = WeatherData('http://dataservice.accuweather.com/currentconditions/v1/295863?apikey=ICseysmELVRIU8R8EF1lle8lR88uJgX6&details=true', 1)
+accuweather = WeatherData('http://dataservice.accuweather.com/currentconditions/v1/295863?apikey=' + accuweather_token + '&details=true', 1)
 res = requests.get(accuweather.url).json()
 # if accuweather data exist, then read it
 
@@ -107,7 +108,7 @@ else:
     )
 
 # create object openweathermap
-openweathermap = WeatherData('https://api.openweathermap.org/data/2.5/weather?lat=56.89&lon=60.59&appid=adb6cc59405eccf87bfc29eab6a9e9b5&units=metric', 2)
+openweathermap = WeatherData('https://api.openweathermap.org/data/2.5/weather?lat=56.89&lon=60.59&appid=' + openweather_token + '&units=metric', 2)
 owres = requests.get(openweathermap.url).json()
 
 # check if data exists
