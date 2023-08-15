@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.generic import DetailView
 from main.weatherdata import weather_info, openweather_info
 from main.clock import oclock
+from userpage.models import Profile
 
 def index(request):
     url = 'http://dataservice.accuweather.com/currentconditions/v1/295863?apikey=ICseysmELVRIU8R8EF1lle8lR88uJgX6'
@@ -13,6 +14,8 @@ def index(request):
         'info': weather_info,
         'clock': oclock,
         'openweather_info': openweather_info,
+        'selected_city': Profile.objects.get(UserID = request.user).SelectedCity,
+        'user_id': request.user,
     }
 
     return render(request, 'main/index.html', context)
